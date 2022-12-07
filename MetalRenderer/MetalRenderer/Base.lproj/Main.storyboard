@@ -711,7 +711,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                     <connections>
-                        <outlet property="metalView" destination="m2S-Jp-Qdl" id="Hti-XJ-wye"/>
+                        <outlet property="metalView" destination="m2S-Jp-Qdl" id="bjx-Lj-L0u"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -2,14 +2,14 @@
 //  ViewController.swift
 //  MetalRenderer
 //
-//  Created by USER on 2022/12/05.
+//  Created by Seungyeon Lee on 2022/12/05.
 //
 
 import Cocoa
 import MetalKit
 
 class ViewController: NSViewController {
-
+    
     @IBOutlet var metalView: MTKView!
     var renderer: Renderer?
     
