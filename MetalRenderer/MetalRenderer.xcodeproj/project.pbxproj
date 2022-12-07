@@ -12,6 +12,7 @@
 		CE1C109A293E224D00FE0A26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1C1099293E224D00FE0A26 /* Assets.xcassets */; };
 		CE1C109D293E224D00FE0A26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C109B293E224D00FE0A26 /* Main.storyboard */; };
 		CE1C10A5293E2E4800FE0A26 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C10A4293E2E4800FE0A26 /* Renderer.swift */; };
+		CEB38F612940E5BD00C9B014 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F602940E5BD00C9B014 /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CE1C109C293E224D00FE0A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE1C109E293E224D00FE0A26 /* MetalRenderer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalRenderer.entitlements; sourceTree = "<group>"; };
 		CE1C10A4293E2E4800FE0A26 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		CEB38F602940E5BD00C9B014 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +58,11 @@
 			children = (
 				CE1C1095293E224C00FE0A26 /* AppDelegate.swift */,
 				CE1C1097293E224C00FE0A26 /* ViewController.swift */,
+				CE1C10A4293E2E4800FE0A26 /* Renderer.swift */,
+				CEB38F602940E5BD00C9B014 /* Shaders.metal */,
 				CE1C1099293E224D00FE0A26 /* Assets.xcassets */,
 				CE1C109B293E224D00FE0A26 /* Main.storyboard */,
 				CE1C109E293E224D00FE0A26 /* MetalRenderer.entitlements */,
-				CE1C10A4293E2E4800FE0A26 /* Renderer.swift */,
 			);
 			path = MetalRenderer;
 			sourceTree = "<group>";
@@ -90,7 +93,7 @@
 		CE1C108A293E224C00FE0A26 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
@@ -137,6 +140,7 @@
 				CE1C1098293E224C00FE0A26 /* ViewController.swift in Sources */,
 				CE1C10A5293E2E4800FE0A26 /* Renderer.swift in Sources */,
 				CE1C1096293E224C00FE0A26 /* AppDelegate.swift in Sources */,
+				CEB38F612940E5BD00C9B014 /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

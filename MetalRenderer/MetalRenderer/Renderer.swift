@@ -2,7 +2,7 @@
 //  Renderer.swift
 //  MetalRenderer
 //
-//  Created by USER on 2022/12/05.
+//  Created by Seungyeon Lee on 2022/12/05.
 //
 
 import Foundation
@@ -56,7 +56,7 @@ extension Renderer: MTKViewDelegate {
         commandEncoder.setRenderPipelineState(pipelineState)
         
         // draw call
-        commandEncoder.drawPrimitives(type: .point, vertexStart: 0, vertexCount: 1)
+        commandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
         commandEncoder.endEncoding()
         
         commandBuffer.present(drawable)
