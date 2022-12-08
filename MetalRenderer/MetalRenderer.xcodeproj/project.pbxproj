@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE1C1096293E224C00FE0A26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C1095293E224C00FE0A26 /* AppDelegate.swift */; };
-		CE1C1098293E224C00FE0A26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C1097293E224C00FE0A26 /* ViewController.swift */; };
-		CE1C109A293E224D00FE0A26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1C1099293E224D00FE0A26 /* Assets.xcassets */; };
-		CE1C109D293E224D00FE0A26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C109B293E224D00FE0A26 /* Main.storyboard */; };
-		CE1C10A5293E2E4800FE0A26 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C10A4293E2E4800FE0A26 /* Renderer.swift */; };
-		CEB38F612940E5BD00C9B014 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F602940E5BD00C9B014 /* Shaders.metal */; };
+		CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F6E2942282200C9B014 /* AppDelegate.swift */; };
+		CEB38F712942282200C9B014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F702942282200C9B014 /* ViewController.swift */; };
+		CEB38F732942282300C9B014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB38F722942282300C9B014 /* Assets.xcassets */; };
+		CEB38F762942282300C9B014 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB38F742942282300C9B014 /* Main.storyboard */; };
+		CEB38F7E2942293400C9B014 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F7D2942293400C9B014 /* Renderer.swift */; };
+		CEB38F802942309200C9B014 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F7F2942309200C9B014 /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE1C1092293E224C00FE0A26 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE1C1095293E224C00FE0A26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE1C1097293E224C00FE0A26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE1C1099293E224D00FE0A26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE1C109C293E224D00FE0A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE1C109E293E224D00FE0A26 /* MetalRenderer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalRenderer.entitlements; sourceTree = "<group>"; };
-		CE1C10A4293E2E4800FE0A26 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		CEB38F602940E5BD00C9B014 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		CEB38F6B2942282200C9B014 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB38F6E2942282200C9B014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEB38F702942282200C9B014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEB38F722942282300C9B014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEB38F752942282300C9B014 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CEB38F772942282300C9B014 /* MetalRenderer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalRenderer.entitlements; sourceTree = "<group>"; };
+		CEB38F7D2942293400C9B014 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		CEB38F7F2942309200C9B014 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CE1C108F293E224C00FE0A26 /* Frameworks */ = {
+		CEB38F682942282200C9B014 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,32 +37,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE1C1089293E224C00FE0A26 = {
+		CEB38F622942282200C9B014 = {
 			isa = PBXGroup;
 			children = (
-				CE1C1094293E224C00FE0A26 /* MetalRenderer */,
-				CE1C1093293E224C00FE0A26 /* Products */,
+				CEB38F6D2942282200C9B014 /* MetalRenderer */,
+				CEB38F6C2942282200C9B014 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CE1C1093293E224C00FE0A26 /* Products */ = {
+		CEB38F6C2942282200C9B014 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE1C1092293E224C00FE0A26 /* MetalRenderer.app */,
+				CEB38F6B2942282200C9B014 /* MetalRenderer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE1C1094293E224C00FE0A26 /* MetalRenderer */ = {
+		CEB38F6D2942282200C9B014 /* MetalRenderer */ = {
 			isa = PBXGroup;
 			children = (
-				CE1C1095293E224C00FE0A26 /* AppDelegate.swift */,
-				CE1C1097293E224C00FE0A26 /* ViewController.swift */,
-				CE1C10A4293E2E4800FE0A26 /* Renderer.swift */,
-				CEB38F602940E5BD00C9B014 /* Shaders.metal */,
-				CE1C1099293E224D00FE0A26 /* Assets.xcassets */,
-				CE1C109B293E224D00FE0A26 /* Main.storyboard */,
-				CE1C109E293E224D00FE0A26 /* MetalRenderer.entitlements */,
+				CEB38F6E2942282200C9B014 /* AppDelegate.swift */,
+				CEB38F702942282200C9B014 /* ViewController.swift */,
+				CEB38F7D2942293400C9B014 /* Renderer.swift */,
+				CEB38F722942282300C9B014 /* Assets.xcassets */,
+				CEB38F742942282300C9B014 /* Main.storyboard */,
+				CEB38F772942282300C9B014 /* MetalRenderer.entitlements */,
+				CEB38F7F2942309200C9B014 /* Shaders.metal */,
 			);
 			path = MetalRenderer;
 			sourceTree = "<group>";
@@ -70,13 +70,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE1C1091293E224C00FE0A26 /* MetalRenderer */ = {
+		CEB38F6A2942282200C9B014 /* MetalRenderer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE1C10A1293E224D00FE0A26 /* Build configuration list for PBXNativeTarget "MetalRenderer" */;
+			buildConfigurationList = CEB38F7A2942282300C9B014 /* Build configuration list for PBXNativeTarget "MetalRenderer" */;
 			buildPhases = (
-				CE1C108E293E224C00FE0A26 /* Sources */,
-				CE1C108F293E224C00FE0A26 /* Frameworks */,
-				CE1C1090293E224C00FE0A26 /* Resources */,
+				CEB38F672942282200C9B014 /* Sources */,
+				CEB38F682942282200C9B014 /* Frameworks */,
+				CEB38F692942282200C9B014 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,25 +84,25 @@
 			);
 			name = MetalRenderer;
 			productName = MetalRenderer;
-			productReference = CE1C1092293E224C00FE0A26 /* MetalRenderer.app */;
+			productReference = CEB38F6B2942282200C9B014 /* MetalRenderer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CE1C108A293E224C00FE0A26 /* Project object */ = {
+		CEB38F632942282200C9B014 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
+				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					CE1C1091293E224C00FE0A26 = {
+					CEB38F6A2942282200C9B014 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
-			buildConfigurationList = CE1C108D293E224C00FE0A26 /* Build configuration list for PBXProject "MetalRenderer" */;
+			buildConfigurationList = CEB38F662942282200C9B014 /* Build configuration list for PBXProject "MetalRenderer" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,47 +110,47 @@
 				en,
 				Base,
 			);
-			mainGroup = CE1C1089293E224C00FE0A26;
-			productRefGroup = CE1C1093293E224C00FE0A26 /* Products */;
+			mainGroup = CEB38F622942282200C9B014;
+			productRefGroup = CEB38F6C2942282200C9B014 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE1C1091293E224C00FE0A26 /* MetalRenderer */,
+				CEB38F6A2942282200C9B014 /* MetalRenderer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CE1C1090293E224C00FE0A26 /* Resources */ = {
+		CEB38F692942282200C9B014 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1C109A293E224D00FE0A26 /* Assets.xcassets in Resources */,
-				CE1C109D293E224D00FE0A26 /* Main.storyboard in Resources */,
+				CEB38F732942282300C9B014 /* Assets.xcassets in Resources */,
+				CEB38F762942282300C9B014 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CE1C108E293E224C00FE0A26 /* Sources */ = {
+		CEB38F672942282200C9B014 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1C1098293E224C00FE0A26 /* ViewController.swift in Sources */,
-				CE1C10A5293E2E4800FE0A26 /* Renderer.swift in Sources */,
-				CE1C1096293E224C00FE0A26 /* AppDelegate.swift in Sources */,
-				CEB38F612940E5BD00C9B014 /* Shaders.metal in Sources */,
+				CEB38F802942309200C9B014 /* Shaders.metal in Sources */,
+				CEB38F712942282200C9B014 /* ViewController.swift in Sources */,
+				CEB38F7E2942293400C9B014 /* Renderer.swift in Sources */,
+				CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CE1C109B293E224D00FE0A26 /* Main.storyboard */ = {
+		CEB38F742942282300C9B014 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CE1C109C293E224D00FE0A26 /* Base */,
+				CEB38F752942282300C9B014 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CE1C109F293E224D00FE0A26 /* Debug */ = {
+		CEB38F782942282300C9B014 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -218,7 +218,7 @@
 			};
 			name = Debug;
 		};
-		CE1C10A0293E224D00FE0A26 /* Release */ = {
+		CEB38F792942282300C9B014 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -271,7 +271,7 @@
 			};
 			name = Release;
 		};
-		CE1C10A2293E224D00FE0A26 /* Debug */ = {
+		CEB38F7B2942282300C9B014 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -296,7 +296,7 @@
 			};
 			name = Debug;
 		};
-		CE1C10A3293E224D00FE0A26 /* Release */ = {
+		CEB38F7C2942282300C9B014 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -324,25 +324,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE1C108D293E224C00FE0A26 /* Build configuration list for PBXProject "MetalRenderer" */ = {
+		CEB38F662942282200C9B014 /* Build configuration list for PBXProject "MetalRenderer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE1C109F293E224D00FE0A26 /* Debug */,
-				CE1C10A0293E224D00FE0A26 /* Release */,
+				CEB38F782942282300C9B014 /* Debug */,
+				CEB38F792942282300C9B014 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE1C10A1293E224D00FE0A26 /* Build configuration list for PBXNativeTarget "MetalRenderer" */ = {
+		CEB38F7A2942282300C9B014 /* Build configuration list for PBXNativeTarget "MetalRenderer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE1C10A2293E224D00FE0A26 /* Debug */,
-				CE1C10A3293E224D00FE0A26 /* Release */,
+				CEB38F7B2942282300C9B014 /* Debug */,
+				CEB38F7C2942282300C9B014 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CE1C108A293E224C00FE0A26 /* Project object */;
+	rootObject = CEB38F632942282200C9B014 /* Project object */;
 }
