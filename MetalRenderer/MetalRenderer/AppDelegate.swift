@@ -2,13 +2,16 @@
 //  AppDelegate.swift
 //  MetalRenderer
 //
-//  Created by Seungyeon Lee on 2022/12/05.
+//  Created by leesy on 2022/12/08.
 //
 
 import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
+
+    
+
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application

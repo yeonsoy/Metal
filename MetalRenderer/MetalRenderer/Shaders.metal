@@ -2,12 +2,11 @@
 //  Shaders.metal
 //  MetalRenderer
 //
-//  Created by Seungyeon Lee on 2022/12/08.
+//  Created by leesy on 2022/12/08.
 //
 
 #include <metal_stdlib>
 using namespace metal;
-
 
 constant float4 position[3] = {
     float4(-0.5, -0.2, 0, 1),
