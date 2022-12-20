@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1DE16E29520BD30030FB3E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DE16D29520BD30030FB3E /* Extensions.swift */; };
 		CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F6E2942282200C9B014 /* AppDelegate.swift */; };
 		CEB38F712942282200C9B014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F702942282200C9B014 /* ViewController.swift */; };
 		CEB38F732942282300C9B014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB38F722942282300C9B014 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE1DE16D29520BD30030FB3E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEB38F6B2942282200C9B014 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB38F6E2942282200C9B014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB38F702942282200C9B014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,10 +61,11 @@
 				CEB38F6E2942282200C9B014 /* AppDelegate.swift */,
 				CEB38F702942282200C9B014 /* ViewController.swift */,
 				CEB38F7D2942293400C9B014 /* Renderer.swift */,
+				CE1DE16D29520BD30030FB3E /* Extensions.swift */,
+				CEB38F7F2942309200C9B014 /* Shaders.metal */,
 				CEB38F722942282300C9B014 /* Assets.xcassets */,
 				CEB38F742942282300C9B014 /* Main.storyboard */,
 				CEB38F772942282300C9B014 /* MetalRenderer.entitlements */,
-				CEB38F7F2942309200C9B014 /* Shaders.metal */,
 			);
 			path = MetalRenderer;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1DE16E29520BD30030FB3E /* Extensions.swift in Sources */,
 				CEB38F802942309200C9B014 /* Shaders.metal in Sources */,
 				CEB38F712942282200C9B014 /* ViewController.swift in Sources */,
 				CEB38F7E2942293400C9B014 /* Renderer.swift in Sources */,
