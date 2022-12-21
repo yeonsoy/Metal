@@ -18,6 +18,7 @@ class Renderer: NSObject {
     let commandQueue: MTLCommandQueue
     static var library: MTLLibrary!
     let pipelineState: MTLRenderPipelineState
+    let depthStencilState: MTLDepthStencilState
     
     let train: Model
     let tree: Model
@@ -31,16 +32,26 @@ class Renderer: NSObject {
         self.commandQueue = commandQueue
         Renderer.library = device.makeDefaultLibrary()!
         pipelineState = Renderer.createPipelineState()
+        depthStencilState = Renderer.createDepthState()
+        
+        view.depthStencilPixelFormat = .depth32Float
         
         train = Model(name: "train")
         train.transform.position = [0.4, 0, 0]
         train.transform.scale = 0.5
         
         tree = Model(name: "treefir")
-        tree.transform.position = [-0.6, 0, 0.3]
+        tree.transform.position = [-1, 0, 0.3]
         tree.transform.scale = 0.5
         
         super.init()
+    }
+    
+    static func createDepthState() -> MTLDepthStencilState {
+        let depthDescriptor = MTLDepthStencilDescriptor()
+        depthDescriptor.depthCompareFunction = .less
+        depthDescriptor.isDepthWriteEnabled = true
+        return Renderer.device.makeDepthStencilState(descriptor: depthDescriptor)!
     }
     
     static func createPipelineState() -> MTLRenderPipelineState {
@@ -53,6 +64,7 @@ class Renderer: NSObject {
         pipelineStateDescriptor.vertexFunction = vertexFunction
         pipelineStateDescriptor.fragmentFunction = fragmentFrunction
         pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
+        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float
         
         return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }
@@ -73,11 +85,18 @@ extension Renderer: MTKViewDelegate {
         }
         let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)!
         commandEncoder.setRenderPipelineState(pipelineState)
+        commandEncoder.setDepthStencilState(depthStencilState)
+        
+        let projectionMatrix = float4x4(projectionFov: radians(fromDegrees: 65),
+                                        near: 0.1,
+                                        far: 100,
+                                        aspect: Float(view.bounds.width / view.bounds.height))
         
         var viewTransform = Transform()
         viewTransform.position.y = 1.0
+        viewTransform.position.z = -2.0
         
-        var viewMatrix = viewTransform.matrix.inverse
+        var viewMatrix = projectionMatrix * viewTransform.matrix.inverse
         commandEncoder.setVertexBytes(&viewMatrix,
                                       length: MemoryLayout<float4x4>.stride,
                                       index: 22)
