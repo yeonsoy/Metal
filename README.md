@@ -24,3 +24,18 @@
 
 ## Challenge: Add Color
 <img width="497" alt="스크린샷 2022-12-21 오후 11 58 06" src="https://user-images.githubusercontent.com/26589915/208937797-065fa125-6f3f-4b47-80e9-198b3974f514.png">
+
+## Position your model
+<img width="499" alt="스크린샷 2022-12-22 오전 12 27 43" src="https://user-images.githubusercontent.com/26589915/208949137-786c709c-c4e3-439c-9bea-3c578319f130.png">
+
+## Coordinate Spaces
+![image1](https://user-images.githubusercontent.com/26589915/208949219-04ac98e5-b1cc-4434-ac09-2b4f6ce6101d.png) |![image2](https://user-images.githubusercontent.com/26589915/208949223-e490a6a9-03d2-47cc-b88a-b7188cd8fd04.png)
+--- | --- |
+
+## Projection and Depth
+![image1](https://user-images.githubusercontent.com/26589915/208949262-c210e792-2483-4bfa-9ad4-fa53908496ed.png) |![image2](https://user-images.githubusercontent.com/26589915/208949274-f57bcadf-91e0-4f42-9953-db5076814dae.png)
+--- | --- |
+
+## Cameras
+![image1](https://user-images.githubusercontent.com/26589915/208949289-1d954b57-c40e-42c9-9604-ad20feff6fa8.png) |![image2](https://user-images.githubusercontent.com/26589915/208949294-15376be0-063e-47ba-985e-9ac177399f01.png)
+--- | --- |
