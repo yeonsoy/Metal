@@ -71,13 +71,17 @@ extension Renderer: MTKViewDelegate {
         for mtkMesh in train.mtkMeshes {
             for vertexBuffer in mtkMesh.vertexBuffers {
                 commandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: 0)
+                
+                var color = 0
                 for submesh in mtkMesh.submeshes {
+                    commandEncoder.setVertexBytes(&color, length: MemoryLayout<Int>.stride, index: 11)
                     // draw call
                     commandEncoder.drawIndexedPrimitives(type: .triangle,
                                                          indexCount: submesh.indexCount,
                                                          indexType: submesh.indexType,
                                                          indexBuffer: submesh.indexBuffer.buffer,
                                                          indexBufferOffset: submesh.indexBuffer.offset)
+                    color += 1
                 }
             }
         }
