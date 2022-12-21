@@ -15,6 +15,7 @@
 		CE1DE17D29535B480030FB3E /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DE17C29535B480030FB3E /* Transform.swift */; };
 		CE1DE18229535D020030FB3E /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = CE1DE18029535D020030FB3E /* treefir.mtl */; };
 		CE1DE18329535D020030FB3E /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = CE1DE18129535D020030FB3E /* treefir.obj */; };
+		CE1DE185295361970030FB3E /* Cameras.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DE184295361970030FB3E /* Cameras.swift */; };
 		CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F6E2942282200C9B014 /* AppDelegate.swift */; };
 		CEB38F712942282200C9B014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F702942282200C9B014 /* ViewController.swift */; };
 		CEB38F732942282300C9B014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB38F722942282300C9B014 /* Assets.xcassets */; };
@@ -32,6 +33,8 @@
 		CE1DE17C29535B480030FB3E /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		CE1DE18029535D020030FB3E /* treefir.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.mtl; sourceTree = "<group>"; };
 		CE1DE18129535D020030FB3E /* treefir.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.obj; sourceTree = "<group>"; };
+		CE1DE184295361970030FB3E /* Cameras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cameras.swift; sourceTree = "<group>"; };
+		CE1DE186295362900030FB3E /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		CEB38F6B2942282200C9B014 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB38F6E2942282200C9B014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB38F702942282200C9B014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,11 +90,13 @@
 				CEB38F702942282200C9B014 /* ViewController.swift */,
 				CE1DE17A29535AC60030FB3E /* MathLibrary.swift */,
 				CEB38F7D2942293400C9B014 /* Renderer.swift */,
+				CE1DE184295361970030FB3E /* Cameras.swift */,
 				CE1DE16F2953507A0030FB3E /* Model.swift */,
 				CE1DE17C29535B480030FB3E /* Transform.swift */,
-				CE1DE175295352B10030FB3E /* Models */,
 				CE1DE16D29520BD30030FB3E /* Extensions.swift */,
 				CEB38F7F2942309200C9B014 /* Shaders.metal */,
+				CE1DE175295352B10030FB3E /* Models */,
+				CE1DE186295362900030FB3E /* Common.h */,
 				CEB38F722942282300C9B014 /* Assets.xcassets */,
 				CEB38F742942282300C9B014 /* Main.storyboard */,
 				CEB38F772942282300C9B014 /* MetalRenderer.entitlements */,
@@ -181,6 +186,7 @@
 				CEB38F7E2942293400C9B014 /* Renderer.swift in Sources */,
 				CE1DE17D29535B480030FB3E /* Transform.swift in Sources */,
 				CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */,
+				CE1DE185295361970030FB3E /* Cameras.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +260,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = MetalRenderer/Common.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -307,6 +314,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = MetalRenderer/Common.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;

@@ -25,6 +25,10 @@ class ViewController: NSViewController {
                                              blue: 0.8,
                                              alpha: 1.0)
     }
+    
+    override func scrollWheel(with event: NSEvent) {
+        renderer?.zoom(delta: Float(event.deltaY))
+    }
 
 }
 
