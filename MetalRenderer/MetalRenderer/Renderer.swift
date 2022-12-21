@@ -19,20 +19,7 @@ class Renderer: NSObject {
     static var library: MTLLibrary!
     let pipelineState: MTLRenderPipelineState
     
-    let vertices: [Vertex] = [
-        Vertex(position: SIMD3<Float>(-0.5, -0.2, 0), color: SIMD3<Float>(1, 0, 0)),
-        Vertex(position: SIMD3<Float>(0.2, -0.2, 0), color: SIMD3<Float>(0, 1, 0)),
-        Vertex(position: SIMD3<Float>(0, 0.5, 0), color: SIMD3<Float>(0, 0, 1)),
-        Vertex(position: SIMD3<Float>(0.7, 0.7, 0), color: SIMD3<Float>(1, 0, 1))
-    ]
-
-    let indexArray: [uint16] = [
-        0, 1, 2,
-        2, 1, 3
-    ]
-    
-    let vertexBuffer: MTLBuffer
-    let indexBuffer: MTLBuffer
+    let train: Model
     
     init(view: MTKView) {
         guard let device = MTLCreateSystemDefaultDevice(),
@@ -44,10 +31,7 @@ class Renderer: NSObject {
         Renderer.library = device.makeDefaultLibrary()!
         pipelineState = Renderer.createPipelineState()
         
-        let vertexLength = MemoryLayout<Vertex>.stride * vertices.count
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: vertexLength, options: [])!
-        let indexLength = MemoryLayout<uint16>.stride * indexArray.count
-        indexBuffer = device.makeBuffer(bytes: indexArray, length: indexLength, options: [])!
+        train = Model(name: "train")
         
         super.init()
     }
@@ -84,14 +68,22 @@ extension Renderer: MTKViewDelegate {
         
         commandEncoder.setRenderPipelineState(pipelineState)
         
-        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        for mtkMesh in train.mtkMeshes {
+            for vertexBuffer in mtkMesh.vertexBuffers {
+                commandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: 0)
+                for submesh in mtkMesh.submeshes {
+                    // draw call
+                    commandEncoder.drawIndexedPrimitives(type: .triangle,
+                                                         indexCount: submesh.indexCount,
+                                                         indexType: submesh.indexType,
+                                                         indexBuffer: submesh.indexBuffer.buffer,
+                                                         indexBufferOffset: submesh.indexBuffer.offset)
+                }
+            }
+        }
         
-        // draw call
-        commandEncoder.drawIndexedPrimitives(type: .triangle,
-                                             indexCount: indexArray.count,
-                                             indexType: .uint16,
-                                             indexBuffer: indexBuffer,
-                                             indexBufferOffset: 0)
+        
+        
         commandEncoder.endEncoding()
         
         commandBuffer.present(drawable)
