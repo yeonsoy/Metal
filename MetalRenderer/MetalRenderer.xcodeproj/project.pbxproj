@@ -11,6 +11,10 @@
 		CE1DE1702953507A0030FB3E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DE16F2953507A0030FB3E /* Model.swift */; };
 		CE1DE173295352A20030FB3E /* train.mtl in Resources */ = {isa = PBXBuildFile; fileRef = CE1DE171295352A10030FB3E /* train.mtl */; };
 		CE1DE174295352A20030FB3E /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = CE1DE172295352A10030FB3E /* train.obj */; };
+		CE1DE17B29535AC60030FB3E /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DE17A29535AC60030FB3E /* MathLibrary.swift */; };
+		CE1DE17D29535B480030FB3E /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DE17C29535B480030FB3E /* Transform.swift */; };
+		CE1DE18229535D020030FB3E /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = CE1DE18029535D020030FB3E /* treefir.mtl */; };
+		CE1DE18329535D020030FB3E /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = CE1DE18129535D020030FB3E /* treefir.obj */; };
 		CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F6E2942282200C9B014 /* AppDelegate.swift */; };
 		CEB38F712942282200C9B014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F702942282200C9B014 /* ViewController.swift */; };
 		CEB38F732942282300C9B014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB38F722942282300C9B014 /* Assets.xcassets */; };
@@ -24,6 +28,10 @@
 		CE1DE16F2953507A0030FB3E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CE1DE171295352A10030FB3E /* train.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = train.mtl; sourceTree = "<group>"; };
 		CE1DE172295352A10030FB3E /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = train.obj; sourceTree = "<group>"; };
+		CE1DE17A29535AC60030FB3E /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
+		CE1DE17C29535B480030FB3E /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
+		CE1DE18029535D020030FB3E /* treefir.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.mtl; sourceTree = "<group>"; };
+		CE1DE18129535D020030FB3E /* treefir.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.obj; sourceTree = "<group>"; };
 		CEB38F6B2942282200C9B014 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB38F6E2942282200C9B014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB38F702942282200C9B014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +58,8 @@
 			children = (
 				CE1DE172295352A10030FB3E /* train.obj */,
 				CE1DE171295352A10030FB3E /* train.mtl */,
+				CE1DE18129535D020030FB3E /* treefir.obj */,
+				CE1DE18029535D020030FB3E /* treefir.mtl */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -75,8 +85,10 @@
 			children = (
 				CEB38F6E2942282200C9B014 /* AppDelegate.swift */,
 				CEB38F702942282200C9B014 /* ViewController.swift */,
+				CE1DE17A29535AC60030FB3E /* MathLibrary.swift */,
 				CEB38F7D2942293400C9B014 /* Renderer.swift */,
 				CE1DE16F2953507A0030FB3E /* Model.swift */,
+				CE1DE17C29535B480030FB3E /* Transform.swift */,
 				CE1DE175295352B10030FB3E /* Models */,
 				CE1DE16D29520BD30030FB3E /* Extensions.swift */,
 				CEB38F7F2942309200C9B014 /* Shaders.metal */,
@@ -145,8 +157,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1DE18229535D020030FB3E /* treefir.mtl in Resources */,
 				CE1DE174295352A20030FB3E /* train.obj in Resources */,
 				CEB38F732942282300C9B014 /* Assets.xcassets in Resources */,
+				CE1DE18329535D020030FB3E /* treefir.obj in Resources */,
 				CEB38F762942282300C9B014 /* Main.storyboard in Resources */,
 				CE1DE173295352A20030FB3E /* train.mtl in Resources */,
 			);
@@ -160,10 +174,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1DE16E29520BD30030FB3E /* Extensions.swift in Sources */,
+				CE1DE17B29535AC60030FB3E /* MathLibrary.swift in Sources */,
 				CEB38F802942309200C9B014 /* Shaders.metal in Sources */,
 				CEB38F712942282200C9B014 /* ViewController.swift in Sources */,
 				CE1DE1702953507A0030FB3E /* Model.swift in Sources */,
 				CEB38F7E2942293400C9B014 /* Renderer.swift in Sources */,
+				CE1DE17D29535B480030FB3E /* Transform.swift in Sources */,
 				CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
