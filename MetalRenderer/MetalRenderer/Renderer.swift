@@ -22,7 +22,7 @@ class Renderer: NSObject {
     
     let train: Model
     let tree: Model
-    let camera = Camera()
+    let camera = ArcballCamera()
     
     var uniforms = Uniforms()
     
@@ -37,17 +37,19 @@ class Renderer: NSObject {
         pipelineState = Renderer.createPipelineState()
         depthStencilState = Renderer.createDepthState()
         
-        view.depthStencilPixelFormat = .depth32Float
+        camera.target = [0, 0.8, 0]
+        camera.distance = 3
         
         train = Model(name: "train")
         train.transform.position = [0.4, 0, 0]
         train.transform.scale = 0.5
+        train.transform.rotation.y = radians(fromDegrees: 180)
         
         tree = Model(name: "treefir")
-        tree.transform.position = [-1, 0, 0.3]
+        tree.transform.position = [-1, 0, 1]
         tree.transform.scale = 0.5
         
-        camera.transform.position = [0, 0.5, -3]
+        view.depthStencilPixelFormat = .depth32Float
         
         super.init()
     }
@@ -72,12 +74,6 @@ class Renderer: NSObject {
         pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float
         
         return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
-    }
-    
-    func zoom(delta: Float) {
-        let sensitivity: Float = 0.05
-        let cameraVector = camera.transform.matrix.upperLeft.columns.2
-        camera.transform.position += delta * sensitivity * cameraVector
     }
 }
 
