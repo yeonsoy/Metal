@@ -13,6 +13,7 @@ using namespace metal;
 constant float3 lightPosition = float3(2.0, 1.0, 0);
 constant float3 ambientLightColor = float3(1.0, 1.0, 1.0);
 constant float ambientLightIntensity = 0.3;
+constant float3 lightSpecularColor = float3(1.0, 1.0, 1.0);
 
 constant float3 color[6] = {
     float3(1, 0, 0),
@@ -47,9 +48,13 @@ vertex VertexOut vertex_main(VertexIn vertexBuffer [[stage_in]],
     return out;
 }
 
-fragment float4 fragment_main(VertexOut in [[stage_in]]) {
+fragment float4 fragment_main(VertexOut in [[stage_in]],
+                              constant FragmentUniforms &fragmentUniforms [[buffer(22)]]) {
     float3 lightVector = normalize(lightPosition);
     float3 normalVector = normalize(in.worldNormal);
+    
+    float materialShininess = 32;
+    float3 materialSpecularColor = float3(1.0, 1.0, 1.0);
     
     float3 baseColor = in.color;
     
@@ -58,6 +63,11 @@ fragment float4 fragment_main(VertexOut in [[stage_in]]) {
     float3 diffuseColor = baseColor * diffuseIntensity;
     float3 ambientColor = baseColor * ambientLightColor * ambientLightIntensity;
     
-    float3 color = diffuseColor + ambientColor;
+    float3 reflection = reflect(lightVector, normalVector);
+    float3 cameraVector = normalize(in.worldPosition - fragmentUniforms.cameraPosition);
+    float specularIntensity = pow(saturate(dot(reflection, cameraVector)), materialShininess);
+    float3 specularColor = lightSpecularColor * materialSpecularColor * specularIntensity;
+    
+    float3 color = diffuseColor + ambientColor + specularColor;
     return float4(color, 1);
 }

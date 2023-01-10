@@ -22,9 +22,10 @@ class Renderer: NSObject {
     
     let train: Model
     let tree: Model
-    let camera = ArcballCamera()
     
+    let camera = ArcballCamera()
     var uniforms = Uniforms()
+    var fragmentUniforms = FragmentUniforms()
     
     init(view: MTKView) {
         guard let device = MTLCreateSystemDefaultDevice(),
@@ -96,6 +97,11 @@ extension Renderer: MTKViewDelegate {
         
         uniforms.viewMatrix = camera.viewMatrix
         uniforms.projectionMatrix = camera.projectionMatrix
+        
+        fragmentUniforms.cameraPosition = camera.transform.position
+        commandEncoder.setFragmentBytes(&fragmentUniforms,
+                                        length: MemoryLayout<FragmentUniforms>.stride,
+                                        index: 22)
         
         let models = [tree, train]
         for model in models {
