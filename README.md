@@ -59,3 +59,12 @@
 ![image1](https://user-images.githubusercontent.com/26589915/211819104-e36fbd7a-f16f-4859-8619-a13889b9f6b2.png) |![image2](https://user-images.githubusercontent.com/26589915/211819111-7b0a6daf-c219-4441-bd7a-2183c0c62ad7.png)
 --- | --- |
 
+## Materials
+<img width="492" alt="ScreenShot 2023-01-11 PM 11 40 09" src="https://user-images.githubusercontent.com/26589915/211840127-8936c4c9-63eb-4266-9496-2485cd166fa3.png">
+
+## Texture Coordinates
+<img width="490" alt="ScreenShot 2023-01-11 PM 11 46 05" src="https://user-images.githubusercontent.com/26589915/211840134-b6927f1f-5dc7-4871-b57a-575a28f7a329.png">
+
+## Textures
+<img width="492" alt="ScreenShot 2023-01-12 AM 12 01 01" src="https://user-images.githubusercontent.com/26589915/211840142-e7458120-c657-46df-ad58-ddf6e9450191.png">
+
