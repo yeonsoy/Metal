@@ -16,15 +16,12 @@ struct Vertex {
 class Renderer: NSObject {
     static var device: MTLDevice!
     let commandQueue: MTLCommandQueue
+    
     static var library: MTLLibrary!
     let pipelineState: MTLRenderPipelineState
     let depthStencilState: MTLDepthStencilState
     
     weak var scene: Scene?
-    
-    let camera = ArcballCamera()
-    var uniforms = Uniforms()
-    var fragmentUniforms = FragmentUniforms()
     
     init(view: MTKView) {
         guard let device = MTLCreateSystemDefaultDevice(),
@@ -36,9 +33,6 @@ class Renderer: NSObject {
         Renderer.library = device.makeDefaultLibrary()!
         pipelineState = Renderer.createPipelineState()
         depthStencilState = Renderer.createDepthState()
-        
-        camera.target = [0, 0.8, 0]
-        camera.distance = 3
         
         view.depthStencilPixelFormat = .depth32Float
         
@@ -71,7 +65,7 @@ class Renderer: NSObject {
 extension Renderer: MTKViewDelegate {
     // 사용자가 macOS 창의 크기를 조정하거나 iOS 기기를 회전할 때와 같이 보기의 크기가 변경될 때 발생.
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        camera.aspect = Float(view.bounds.width / view.bounds.height)
+        scene?.sceneSizeWillChange(to: size)
     }
     
     // 모든 프레임에서 실행. GPU 상호 작용 실행 함수.
@@ -84,20 +78,16 @@ extension Renderer: MTKViewDelegate {
         }
         let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)!
         commandEncoder.setRenderPipelineState(pipelineState)
-        
-        uniforms.viewMatrix = camera.viewMatrix
-        uniforms.projectionMatrix = camera.projectionMatrix
-        
-        fragmentUniforms.cameraPosition = camera.transform.position
-        commandEncoder.setFragmentBytes(&fragmentUniforms,
-                                        length: MemoryLayout<FragmentUniforms>.stride,
-                                        index: 22)
-        
         commandEncoder.setDepthStencilState(depthStencilState)
+        
+        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
+        scene.update(deltaTime: deltaTime)
         
         for renderable in scene.renderables {
             commandEncoder.pushDebugGroup(renderable.name)
-            renderable.render(commandEncoder: commandEncoder, uniforms: uniforms)
+            renderable.render(commandEncoder: commandEncoder,
+                              uniforms: scene.uniforms,
+                              fragmentUniforms: scene.fragmentUniforms)
             commandEncoder.popDebugGroup()
         }
         

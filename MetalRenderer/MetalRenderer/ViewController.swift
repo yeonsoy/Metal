@@ -29,7 +29,7 @@ class ViewController: NSViewController {
     }
     
     override func scrollWheel(with event: NSEvent) {
-        renderer?.camera.zoom(delta: Float(event.deltaY))
+        scene?.camera.zoom(delta: Float(event.deltaY))
     }
     
     @objc func handlePan(gesture: NSPanGestureRecognizer) {
@@ -37,7 +37,7 @@ class ViewController: NSViewController {
         let delta = SIMD2<Float>(Float(translation.x),
                                  Float(translation.y))
         
-        renderer?.camera.rotate(delta: delta)
+        scene?.camera.rotate(delta: delta)
         gesture.setTranslation(.zero, in: gesture.view)
     }
     

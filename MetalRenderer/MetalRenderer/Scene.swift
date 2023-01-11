@@ -15,9 +15,25 @@ class Scene {
     
     var sceneSize: CGSize
     
+    let camera = ArcballCamera()
+    var uniforms = Uniforms()
+    var fragmentUniforms = FragmentUniforms()
+    
     init(sceneSize: CGSize) {
         self.sceneSize = sceneSize
+        sceneSizeWillChange(to: sceneSize)
         setupScene()
+    }
+    
+    func updateScene(deltaTime: Float) {
+        // override this update the scene
+    }
+    
+    final func update(deltaTime: Float) {
+        updateScene(deltaTime: deltaTime)
+        uniforms.projectionMatrix = camera.projectionMatrix
+        uniforms.viewMatrix = camera.viewMatrix
+        fragmentUniforms.cameraPosition = camera.position
     }
     
     final func add(node: Node, parent: Node? = nil, render: Bool = true) {
@@ -33,5 +49,10 @@ class Scene {
     
     func setupScene() {
         // override this to add objects to the scene
+    }
+    
+    func sceneSizeWillChange(to size: CGSize) {
+        camera.aspect = Float(size.width / size.height)
+        sceneSize = size
     }
 }
