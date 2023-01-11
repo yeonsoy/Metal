@@ -12,6 +12,7 @@
 		CE00D114296EE9470040CFEA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE00D113296EE9470040CFEA /* GameScene.swift */; };
 		CE00D116296EE9990040CFEA /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE00D115296EE9990040CFEA /* Renderable.swift */; };
 		CE00D11A296EF5C10040CFEA /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE00D119296EF5C10040CFEA /* Mesh.swift */; };
+		CE00D11C296F03A80040CFEA /* train-color.png in Resources */ = {isa = PBXBuildFile; fileRef = CE00D11B296F03A80040CFEA /* train-color.png */; };
 		CE1DE16E29520BD30030FB3E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DE16D29520BD30030FB3E /* Extensions.swift */; };
 		CE1DE1702953507A0030FB3E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DE16F2953507A0030FB3E /* Model.swift */; };
 		CE1DE173295352A20030FB3E /* train.mtl in Resources */ = {isa = PBXBuildFile; fileRef = CE1DE171295352A10030FB3E /* train.mtl */; };
@@ -35,6 +36,7 @@
 		CE00D113296EE9470040CFEA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CE00D115296EE9990040CFEA /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		CE00D119296EF5C10040CFEA /* Mesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
+		CE00D11B296F03A80040CFEA /* train-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "train-color.png"; sourceTree = "<group>"; };
 		CE1DE16D29520BD30030FB3E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CE1DE16F2953507A0030FB3E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CE1DE171295352A10030FB3E /* train.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = train.mtl; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		CE1DE175295352B10030FB3E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE00D11B296F03A80040CFEA /* train-color.png */,
 				CE1DE172295352A10030FB3E /* train.obj */,
 				CE1DE171295352A10030FB3E /* train.mtl */,
 				CE1DE18129535D020030FB3E /* treefir.obj */,
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1DE18229535D020030FB3E /* treefir.mtl in Resources */,
+				CE00D11C296F03A80040CFEA /* train-color.png in Resources */,
 				CE1DE174295352A20030FB3E /* train.obj in Resources */,
 				CEB38F732942282300C9B014 /* Assets.xcassets in Resources */,
 				CE1DE18329535D020030FB3E /* treefir.obj in Resources */,
