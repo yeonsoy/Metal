@@ -12,6 +12,7 @@ class ViewController: NSViewController {
     
     @IBOutlet var metalView: MTKView!
     var renderer: Renderer?
+    var scene: Scene?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,8 @@ class ViewController: NSViewController {
         metalView.device = Renderer.device
         metalView.delegate = renderer
         metalView.clearColor = MTLClearColor(red: 1.0, green: 1.0, blue: 0.8, alpha: 1.0)
+        scene = GameScene(sceneSize: metalView.bounds.size)
+        renderer?.scene = scene
         
         let pan = NSPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(pan)

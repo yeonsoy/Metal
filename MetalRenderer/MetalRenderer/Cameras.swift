@@ -8,7 +8,7 @@
 import Foundation
 import MetalKit
 
-class Camera {
+class Camera: Node {
     var transform = Transform()
     
     var fov = radians(fromDegrees: 60)
