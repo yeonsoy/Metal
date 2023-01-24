@@ -31,6 +31,17 @@ class Model: Node {
         super.init()
         self.name = name
     }
+    
+    func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
+        let mtkSubmesh = submesh.mtkSubmesh
+        
+        // draw call
+        commandEncoder.drawIndexedPrimitives(type: .triangle,
+                                             indexCount: mtkSubmesh.indexCount,
+                                             indexType: mtkSubmesh.indexType,
+                                             indexBuffer: mtkSubmesh.indexBuffer.buffer,
+                                             indexBufferOffset: mtkSubmesh.indexBuffer.offset)
+    }
 }
 
 extension Model: Renderable {
@@ -57,14 +68,7 @@ extension Model: Renderable {
                                                     length: MemoryLayout<Material>.stride,
                                                     index: 11)
                     commandEncoder.setFragmentTexture(submesh.textures.baseColor, index: 0)
-                    let mtkSubmesh = submesh.mtkSubmesh
-                    
-                    // draw call
-                    commandEncoder.drawIndexedPrimitives(type: .triangle,
-                                                         indexCount: mtkSubmesh.indexCount,
-                                                         indexType: mtkSubmesh.indexType,
-                                                         indexBuffer: mtkSubmesh.indexBuffer.buffer,
-                                                         indexBufferOffset: mtkSubmesh.indexBuffer.offset)
+                    render(commandEncoder: commandEncoder, submesh: submesh)
                 }
             }
         }

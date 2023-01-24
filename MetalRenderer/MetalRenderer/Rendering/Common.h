@@ -2,7 +2,7 @@
 //  Common.h
 //  MetalRenderer
 //
-//  Created by USER on 2022/12/22.
+//  Created by leesy on 2022/12/22.
 //
 
 #ifndef Common_h
@@ -25,5 +25,9 @@ typedef  struct {
     vector_float3 specularColor;
     float shininess;
 } Material;
+
+typedef struct {
+    matrix_float4x4 modelMatrix;
+} Instances;
 
 #endif /* Common_h */

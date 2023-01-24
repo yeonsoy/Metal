@@ -46,22 +46,26 @@ struct Submesh {
     
     let textures: Textures
     let pipelineState: MTLRenderPipelineState
+    let instancedPipelineState: MTLRenderPipelineState
     
     init(mdlSubmesh: MDLSubmesh, mtkSubmesh: MTKSubmesh) {
         self.mtkSubmesh = mtkSubmesh
         material = Material(material: mdlSubmesh.material)
         textures = Textures(material: mdlSubmesh.material)
-        pipelineState = Submesh.createPipelineState(textures: textures)
+        pipelineState = Submesh.createPipelineState(vertexFunctionName: "vertex_main",
+                                                    textures: textures)
+        instancedPipelineState = Submesh.createPipelineState(vertexFunctionName: "vertex_instances",
+                                                             textures: textures)
     }
     
-    static func createPipelineState(textures: Textures) -> MTLRenderPipelineState {
+    static func createPipelineState(vertexFunctionName: String, textures: Textures) -> MTLRenderPipelineState {
         let functionConstants = MTLFunctionConstantValues()
         var property = textures.baseColor != nil
         functionConstants.setConstantValue(&property,
                                            type: .bool,
                                            index: 0)
         
-        let vertexFunction = Renderer.library.makeFunction(name: "vertex_main")
+        let vertexFunction = Renderer.library.makeFunction(name: vertexFunctionName)
         // 2가지 버전으로 함수를 컴파일 한다.
         // index 0의 함수 상수가 True인 버전과, False인 버전이다.
         // 더 많은 Texture가 포함된 경우 컴파일러는 더 많은 Shader를 빌드하여 Constance 함수의 가능한 모든 조합을 만든다.

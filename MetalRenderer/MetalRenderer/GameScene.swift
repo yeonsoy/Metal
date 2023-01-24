@@ -9,7 +9,7 @@ import Foundation
 
 class GameScene: Scene {
     let train = Model(name: "train")
-    let tree = Model(name: "treefir")
+    let trees = Instance(name: "treefir", instanceCount: 100)
     
     override func setupScene() {
         camera.target = [0, 0.8, 0]
@@ -17,7 +17,11 @@ class GameScene: Scene {
         camera.rotation = [-0.4, -0.4, 0]
         
         add(node: train)
-        add(node: tree)
-        tree.position.x = -2.0
+        add(node: trees)
+        
+        for i in 0..<100 {
+            trees.transforms[i].position.x = Float(i) - 50
+            trees.transforms[i].position.z = 2
+        }
     }
 }
