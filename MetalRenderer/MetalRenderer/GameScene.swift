@@ -14,12 +14,15 @@ class GameScene: Scene {
         camera.distance = 8
         camera.rotation = [-0.4, -0.4, 0]
         
-        let train = Instance(name: "train", instanceCount: 100)
+        let trees = Instance(name: "treefir", instanceCount: 4)
+        let train = Model(name: "train")
+        
         add(node: train)
-        for i in 0..<100 {
-            train.transforms[i].position.x = Float.random(in: -5..<5)
-            train.transforms[i].position.z = Float.random(in: 0..<10)
-            train.transforms[i].rotation.y = Float.random(in: 0..<radians(fromDegrees: 359))
-        }
+        add(node: trees)
+        
+        trees.transforms[0].position.x = train.worldBoundingBox().x
+        trees.transforms[1].position.z = -train.worldBoundingBox().z
+        trees.transforms[2].position.x = train.worldBoundingBox().x + train.worldBoundingBox().width
+        trees.transforms[3].position.z = -train.worldBoundingBox().z - train.worldBoundingBox().height
     }
 }
