@@ -44,6 +44,7 @@
 		CE5296CD297F7406004A4422 /* bounce.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE5296C8297F7406004A4422 /* bounce.wav */; };
 		CE5296CE297F7406004A4422 /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE5296C9297F7406004A4422 /* lose.wav */; };
 		CE5296CF297F7406004A4422 /* Attribution in Resources */ = {isa = PBXBuildFile; fileRef = CE5296CA297F7406004A4422 /* Attribution */; };
+		CE5296D2297F7F3C004A4422 /* RayBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5296D1297F7F3C004A4422 /* RayBreak.swift */; };
 		CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F6E2942282200C9B014 /* AppDelegate.swift */; };
 		CEB38F712942282200C9B014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F702942282200C9B014 /* ViewController.swift */; };
 		CEB38F732942282300C9B014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB38F722942282300C9B014 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		CE5296C8297F7406004A4422 /* bounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bounce.wav; sourceTree = "<group>"; };
 		CE5296C9297F7406004A4422 /* lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lose.wav; sourceTree = "<group>"; };
 		CE5296CA297F7406004A4422 /* Attribution */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Attribution; sourceTree = "<group>"; };
+		CE5296D1297F7F3C004A4422 /* RayBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayBreak.swift; sourceTree = "<group>"; };
 		CEB38F6B2942282200C9B014 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB38F6E2942282200C9B014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB38F702942282200C9B014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -216,10 +218,11 @@
 				CE00D118296EF57C0040CFEA /* Rendering */,
 				CEB38F6E2942282200C9B014 /* AppDelegate.swift */,
 				CEB38F702942282200C9B014 /* ViewController.swift */,
+				CE5296D1297F7F3C004A4422 /* RayBreak.swift */,
 				CE00D113296EE9470040CFEA /* GameScene.swift */,
+				CE00D111296EE9360040CFEA /* Scene.swift */,
 				CE1DE184295361970030FB3E /* Cameras.swift */,
 				CE00D10F296EE83F0040CFEA /* Node.swift */,
-				CE00D111296EE9360040CFEA /* Scene.swift */,
 				CE1DE17C29535B480030FB3E /* Transform.swift */,
 				CEB38F722942282300C9B014 /* Assets.xcassets */,
 				CEB38F742942282300C9B014 /* Main.storyboard */,
@@ -334,6 +337,7 @@
 				CEB38F7E2942293400C9B014 /* Renderer.swift in Sources */,
 				CE00D11A296EF5C10040CFEA /* Mesh.swift in Sources */,
 				CE1DE17D29535B480030FB3E /* Transform.swift in Sources */,
+				CE5296D2297F7F3C004A4422 /* RayBreak.swift in Sources */,
 				CE5296A2297F5DC2004A4422 /* Instance.swift in Sources */,
 				CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */,
 				CE1DE185295361970030FB3E /* Cameras.swift in Sources */,
