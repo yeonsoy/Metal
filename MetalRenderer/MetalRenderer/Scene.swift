@@ -47,6 +47,22 @@ class Scene {
         }
     }
     
+    final func remove(node: Node) {
+        if let parent = node.parent {
+            parent.remove(childNode: node)
+        } else {
+            for child in node.children {
+                child.parent = nil
+            }
+            node.children = []
+        }
+        
+        if node is Renderable,
+           let index = renderables.firstIndex(where: { $0 as? Node === node }) {
+            renderables.remove(at: index)
+        }
+    }
+    
     func setupScene() {
         // override this to add objects to the scene
     }
