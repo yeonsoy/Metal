@@ -68,3 +68,15 @@
 ## Textures
 <img width="492" alt="ScreenShot 2023-01-12 AM 12 01 01" src="https://user-images.githubusercontent.com/26589915/211840142-e7458120-c657-46df-ad58-ddf6e9450191.png">
 
+## Function Specialization
+<img width="493" alt="ScreenShot 2023-01-23 PM 11 14 11" src="https://user-images.githubusercontent.com/26589915/214196466-be95cc68-4ce8-42e2-8223-657fca79c34a.png">
+
+## Instancing
+<img width="489" alt="ScreenShot 2023-01-24 AM 10 31 43" src="https://user-images.githubusercontent.com/26589915/214196514-995998d2-1029-4b9d-878b-4c381bbd5dd0.png">
+
+## Challenge: Render all the trains
+![image1](https://user-images.githubusercontent.com/26589915/214196588-8647a8ad-d8d2-4756-9f7f-9ff7130f7360.png) |![image2](https://user-images.githubusercontent.com/26589915/214196591-5fe76558-78ac-4b68-a144-2e4aa4fa573f.png)
+--- | --- |
+
+
+
