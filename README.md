@@ -87,4 +87,16 @@
 ## Collisions
 <img width="501" alt="ScreenShot 2023-01-24 PM 12 56 45" src="https://user-images.githubusercontent.com/26589915/214209369-09754e19-c62b-4e66-82cd-f401fedbd1c6.png">
 
+## Interaction
+<img width="490" alt="ScreenShot 2023-02-14 오전 12 16 03" src="https://user-images.githubusercontent.com/26589915/218497773-c1966d47-ba3f-4cda-a17e-b69a2d17d20d.png">
+
+## Juice it up
+- SoundController
+
+## Game Over
+<img width="492" alt="ScreenShot 2023-02-14 오전 12 14 45" src="https://user-images.githubusercontent.com/26589915/218497675-15cecb2d-5e7c-464a-b351-a2c73b289cdf.png">
+
+## Challenge: Game Over
+<img width="496" alt="ScreenShot 2023-02-14 오전 12 15 35" src="https://user-images.githubusercontent.com/26589915/218497811-161395e8-b70b-4207-a586-dbc3c818428a.png">
+
 
