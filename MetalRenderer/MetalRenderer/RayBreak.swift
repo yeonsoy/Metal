@@ -124,7 +124,7 @@ class RayBreak: Scene {
         if abs(ball.position.z) > gameArea.height / 2 {
             lives -= 1
             if lives < 0 {
-                print("GAME OVER - YOU LOST")
+                gameOver(win: false)
             } else {
                 print("Lives: ", lives)
             }
@@ -157,7 +157,7 @@ class RayBreak: Scene {
         
         if bricks.instanceCount <= 0 {
             remove(node: bricks)
-            print("GAME OVER - YOU WON!!!!")
+            gameOver(win: true)
         }
     }
     
@@ -194,6 +194,23 @@ class RayBreak: Scene {
         
         if bounced {
             soundController.playEffect(name: Sounds.bounce)
+        }
+    }
+    
+    func gameOver(win: Bool) {
+        soundController.stopBackgroundMusic()
+        let sound = win ? Sounds.win : Sounds.lose
+        soundController.playEffect(name: sound)
+        
+        let gameOver = GameOver(sceneSize: sceneSize)
+        gameOver.win = win
+        
+        ballVelocity = SIMD3<Float>(repeating: 0)
+        ball.position = SIMD3<Float>(repeating: 0)
+        remove(node: ball)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.sceneDelegate?.transition(to: gameOver)
         }
     }
 }
