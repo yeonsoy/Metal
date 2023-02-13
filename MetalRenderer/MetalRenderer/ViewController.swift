@@ -22,10 +22,15 @@ class ViewController: NSViewController {
         metalView.delegate = renderer
         metalView.clearColor = MTLClearColor(red: 1.0, green: 1.0, blue: 0.8, alpha: 1.0)
         scene = RayBreak(sceneSize: metalView.bounds.size)
+        scene?.sceneDelegate = self
         renderer?.scene = scene
         
         let pan = NSPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(pan)
+        
+        let click = NSClickGestureRecognizer(target: self,
+                                             action: #selector(handleClick))
+        view.addGestureRecognizer(click)
         
         addKeyboardMonitoring()
     }
@@ -43,4 +48,12 @@ class ViewController: NSViewController {
         gesture.setTranslation(.zero, in: gesture.view)
     }
     
+}
+
+extension ViewController: SceneDelegate {
+    func transition(to scene: Scene) {
+        scene.sceneDelegate = self
+        self.scene = scene
+        renderer?.scene = scene
+    }
 }
