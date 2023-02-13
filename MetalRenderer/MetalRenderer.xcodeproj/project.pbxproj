@@ -45,6 +45,7 @@
 		CE5296CE297F7406004A4422 /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE5296C9297F7406004A4422 /* lose.wav */; };
 		CE5296CF297F7406004A4422 /* Attribution in Resources */ = {isa = PBXBuildFile; fileRef = CE5296CA297F7406004A4422 /* Attribution */; };
 		CE5296D2297F7F3C004A4422 /* RayBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5296D1297F7F3C004A4422 /* RayBreak.swift */; };
+		CEA7A742299A80230035BBD2 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA7A741299A80230035BBD2 /* SoundController.swift */; };
 		CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F6E2942282200C9B014 /* AppDelegate.swift */; };
 		CEB38F712942282200C9B014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F702942282200C9B014 /* ViewController.swift */; };
 		CEB38F732942282300C9B014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB38F722942282300C9B014 /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		CE5296C9297F7406004A4422 /* lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lose.wav; sourceTree = "<group>"; };
 		CE5296CA297F7406004A4422 /* Attribution */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Attribution; sourceTree = "<group>"; };
 		CE5296D1297F7F3C004A4422 /* RayBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayBreak.swift; sourceTree = "<group>"; };
+		CEA7A741299A80230035BBD2 /* SoundController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
 		CEB38F6B2942282200C9B014 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB38F6E2942282200C9B014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB38F702942282200C9B014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				CE5296D0297F742B004A4422 /* Assets */,
 				CE00D118296EF57C0040CFEA /* Rendering */,
 				CEB38F6E2942282200C9B014 /* AppDelegate.swift */,
+				CEA7A741299A80230035BBD2 /* SoundController.swift */,
 				CEB38F702942282200C9B014 /* ViewController.swift */,
 				CE5296D1297F7F3C004A4422 /* RayBreak.swift */,
 				CE00D113296EE9470040CFEA /* GameScene.swift */,
@@ -335,6 +338,7 @@
 				CE1DE1702953507A0030FB3E /* Model.swift in Sources */,
 				CE00D114296EE9470040CFEA /* GameScene.swift in Sources */,
 				CEB38F7E2942293400C9B014 /* Renderer.swift in Sources */,
+				CEA7A742299A80230035BBD2 /* SoundController.swift in Sources */,
 				CE00D11A296EF5C10040CFEA /* Mesh.swift in Sources */,
 				CE1DE17D29535B480030FB3E /* Transform.swift in Sources */,
 				CE5296D2297F7F3C004A4422 /* RayBreak.swift in Sources */,
