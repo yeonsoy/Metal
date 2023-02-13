@@ -17,12 +17,41 @@ class RayBreak: Scene {
     
     var ballVelocity = SIMD3<Float>(Constants.ballSpeed, 0, Constants.ballSpeed)
     
+    var lives = 3
+    
     let paddle = Model(name: "paddle")
     let ball = Model(name: "ball")
     let border = Model(name: "border")
     let bricks = Instance(name: "brick",
                           instanceCount: Constants.rows * Constants.columns)
     var gameArea: (width: Float, height: Float) = (0, 0)
+    
+    var keyLeftDown = false
+    var keyRightDown = false
+    
+    override func keyDown(key: Int, isARepeat: Bool) -> Bool {
+        switch key {
+        case 123:
+            keyLeftDown = true
+        case 124:
+            keyRightDown = true
+        default:
+            return false
+        }
+        return true
+    }
+    
+    override func keyUp(key: Int) -> Bool {
+        switch key {
+        case 123:
+            keyLeftDown = false
+        case 124:
+            keyRightDown = false
+        default:
+            break
+        }
+        return true
+    }
     
     func setupBricks() {
         let margin = gameArea.width * 0.1
@@ -78,6 +107,13 @@ class RayBreak: Scene {
         }
         if abs(ball.position.z) > gameArea.height / 2 {
             ballVelocity.z = -ballVelocity.z
+            lives -= 1
+            
+            if lives < 0 {
+                print("GAME OVER - YOU LOST")
+            } else {
+                print("Lives: ", lives)
+            }
         }
         if ball.worldBoundingBox().intersects(paddle.worldBoundingBox()) {
             ballVelocity.z = -ballVelocity.z
@@ -109,6 +145,32 @@ class RayBreak: Scene {
     
     override func updateScene(deltaTime: Float) {
         ball.position += ballVelocity * deltaTime
+        
+        checkBricks()
+        
         bounceBall()
+        
+        let oldPaddlePosition = paddle.position.x
+        
+        if keyLeftDown {
+            paddle.position.x -= Constants.paddleSpeed
+        }
+        if keyRightDown {
+            paddle.position.x += Constants.paddleSpeed
+        }
+        
+        let paddleWidth = paddle.worldBoundingBox().width
+        let halfBorderWidth = border.worldBoundingBox().width / 2
+        
+        if abs(paddle.position.x) + (paddleWidth / 2) > halfBorderWidth {
+            paddle.position.x = oldPaddlePosition
+        }
+        
+        let transforms: [Transform] = bricks.transforms.map {
+            var transform = $0
+            transform.rotation.y += Float.pi / 4 * deltaTime
+            return transform
+        }
+        bricks.transforms = transforms
     }
 }
