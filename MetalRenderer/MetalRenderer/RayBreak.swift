@@ -21,6 +21,8 @@ class RayBreak: Scene {
         static let bounce = "bounce.wav"
     }
     
+    var startGame = false
+    
     var ballVelocity = SIMD3<Float>(Constants.ballSpeed, 0, Constants.ballSpeed)
     
     var lives = 3
@@ -51,6 +53,7 @@ class RayBreak: Scene {
         default:
             return false
         }
+        startGame = true
         return true
     }
     
@@ -162,6 +165,10 @@ class RayBreak: Scene {
     }
     
     override func updateScene(deltaTime: Float) {
+        if !startGame {
+            return
+        }
+        
         bounced = false
         ball.position += ballVelocity * deltaTime
         
