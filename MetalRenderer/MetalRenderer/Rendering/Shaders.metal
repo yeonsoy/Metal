@@ -31,6 +31,23 @@ struct VertexIn {
     float2 uv [[attribute(2)]];
 };
 
+vertex VertexOut vertex_plane(device const float4 *positionBuffer [[buffer(0)]],
+                             device const float3 *colorBuffer [[buffer(1)]],
+                             uint vertexId [[vertex_id]]) {
+  
+  VertexOut out {
+    .position = positionBuffer[vertexId],
+    .color = colorBuffer[vertexId]
+  };
+  return out;
+}
+
+fragment float4 fragment_plane(VertexOut in [[stage_in]]) {
+  return float4(in.color, 1);
+}
+
+
+
 vertex VertexOut vertex_main(VertexIn vertexBuffer [[stage_in]],
                              constant Uniforms &uniforms [[buffer(21)]]) {
     VertexOut out {

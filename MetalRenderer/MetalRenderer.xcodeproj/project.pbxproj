@@ -47,6 +47,8 @@
 		CE5296D2297F7F3C004A4422 /* RayBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5296D1297F7F3C004A4422 /* RayBreak.swift */; };
 		CEA7A742299A80230035BBD2 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA7A741299A80230035BBD2 /* SoundController.swift */; };
 		CEA7A744299A851E0035BBD2 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA7A743299A851E0035BBD2 /* GameOver.swift */; };
+		CEA7A746299BC19F0035BBD2 /* WavingPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA7A745299BC19F0035BBD2 /* WavingPlane.swift */; };
+		CEA7A748299BC5AB0035BBD2 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA7A747299BC5AB0035BBD2 /* Plane.swift */; };
 		CEB38F6F2942282200C9B014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F6E2942282200C9B014 /* AppDelegate.swift */; };
 		CEB38F712942282200C9B014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB38F702942282200C9B014 /* ViewController.swift */; };
 		CEB38F732942282300C9B014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB38F722942282300C9B014 /* Assets.xcassets */; };
@@ -97,6 +99,8 @@
 		CE5296D1297F7F3C004A4422 /* RayBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayBreak.swift; sourceTree = "<group>"; };
 		CEA7A741299A80230035BBD2 /* SoundController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
 		CEA7A743299A851E0035BBD2 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		CEA7A745299BC19F0035BBD2 /* WavingPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavingPlane.swift; sourceTree = "<group>"; };
+		CEA7A747299BC5AB0035BBD2 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		CEB38F6B2942282200C9B014 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB38F6E2942282200C9B014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB38F702942282200C9B014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				CE00D115296EE9990040CFEA /* Renderable.swift */,
 				CEB38F7D2942293400C9B014 /* Renderer.swift */,
 				CE5296A1297F5DC2004A4422 /* Instance.swift */,
+				CEA7A747299BC5AB0035BBD2 /* Plane.swift */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				CE5296D1297F7F3C004A4422 /* RayBreak.swift */,
 				CEA7A743299A851E0035BBD2 /* GameOver.swift */,
 				CE00D113296EE9470040CFEA /* GameScene.swift */,
+				CEA7A745299BC19F0035BBD2 /* WavingPlane.swift */,
 				CE00D111296EE9360040CFEA /* Scene.swift */,
 				CE1DE184295361970030FB3E /* Cameras.swift */,
 				CE00D10F296EE83F0040CFEA /* Node.swift */,
@@ -333,7 +339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA7A746299BC19F0035BBD2 /* WavingPlane.swift in Sources */,
 				CE1DE16E29520BD30030FB3E /* Extensions.swift in Sources */,
+				CEA7A748299BC5AB0035BBD2 /* Plane.swift in Sources */,
 				CE00D110296EE83F0040CFEA /* Node.swift in Sources */,
 				CE1DE17B29535AC60030FB3E /* MathLibrary.swift in Sources */,
 				CEA7A744299A851E0035BBD2 /* GameOver.swift in Sources */,
