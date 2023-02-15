@@ -9,77 +9,74 @@ import Foundation
 import MetalKit
 
 class Plane: Node {
-    let positionArray: [SIMD4<Float>] = [
-        SIMD4<Float>(-0.5, -0.5, 0, 0.7),
-        SIMD4<Float>(0.5, -0.5, 0, 0.7),
-        SIMD4<Float>(-0.5, 0.5, 0, 1),
-        SIMD4<Float>(0.5, 0.5, 0, 1)
-    ]
-    
-    let colorArray: [SIMD3<Float>] = [
-        SIMD3<Float>(1, 0, 0),
-        SIMD3<Float>(0, 1, 0),
-        SIMD3<Float>(0, 0, 1),
-        SIMD3<Float>(1, 0, 1)
-    ]
-    
-    let indexArray: [uint16] = [
-        0, 1, 2,
-        2, 1, 3
-    ]
-    
-    let pipelineState: MTLRenderPipelineState
-    let positionBuffer: MTLBuffer
-    let colorBuffer: MTLBuffer
-    let indexBuffer: MTLBuffer
+    let meshes: [Mesh]
     
     init(name: String) {
-        pipelineState = Plane.createPipelineState()
-        let positionLength = MemoryLayout<SIMD4<Float>>.stride * positionArray.count
-        positionBuffer = Renderer.device.makeBuffer(bytes: positionArray, length: positionLength, options: [])!
-        let colorLength = MemoryLayout<SIMD3<Float>>.stride * colorArray.count
-        colorBuffer = Renderer.device.makeBuffer(bytes: colorArray, length: colorLength, options: [])!
-        let indexLength = MemoryLayout<uint16>.stride * indexArray.count
-        indexBuffer = Renderer.device.makeBuffer(bytes: indexArray, length: indexLength, options: [])!
+        let assetUrl = Bundle.main.url(forResource: "ball", withExtension: "obj")!
+        let allocator = MTKMeshBufferAllocator(device: Renderer.device)
+        
+        let vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor()
+        let asset = MDLAsset(url: assetUrl,
+                             vertexDescriptor: vertexDescriptor,
+                             bufferAllocator: allocator)
+        
+        asset.loadTextures()
+        
+        let (mdlMeshes, mtkMeshes) = try! MTKMesh.newMeshes(asset: asset, device: Renderer.device)
+        
+        meshes = zip(mdlMeshes, mtkMeshes).map {
+            Mesh(mdlMesh: $0.0, mtkMesh: $0.1)
+        }
+        
         super.init()
+        self.name = name
+        self.boundingBox = mdlMeshes[0].boundingBox
     }
     
-    static func createPipelineState() -> MTLRenderPipelineState {
-        let functionConstants = MTLFunctionConstantValues()
-        let vertexFunction = Renderer.library.makeFunction(name: "vertex_plane")
-        let fragmentFrunction = try! Renderer.library.makeFunction(name: "fragment_plane",
-                                                                   constantValues: functionConstants)
-        // pipeline state properties
-        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
-        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        pipelineStateDescriptor.vertexFunction = vertexFunction
-        pipelineStateDescriptor.fragmentFunction = fragmentFrunction
-        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
-        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float
-        
-        return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
-    }
-    
-    func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
-        commandEncoder.setRenderPipelineState(pipelineState)
-        
-        var wave = deltaTime
-        commandEncoder.setVertexBytes(&wave,
-                                      length: MemoryLayout<Float>.stride,
-                                      index: 2)
-        commandEncoder.setVertexBuffer(positionBuffer, offset: 0, index: 0)
-        commandEncoder.setVertexBuffer(colorBuffer, offset: 0, index: 1)
-        
+    func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
+        let mtkSubmesh = submesh.mtkSubmesh
+
+        // draw call
         commandEncoder.drawIndexedPrimitives(type: .triangle,
-                                             indexCount: indexArray.count,
-                                             indexType: .uint16,
-                                             indexBuffer: indexBuffer,
-                                             indexBufferOffset: 0)
+                                             indexCount: mtkSubmesh.indexCount,
+                                             indexType: mtkSubmesh.indexType,
+                                             indexBuffer: mtkSubmesh.indexBuffer.buffer,
+                                             indexBufferOffset: mtkSubmesh.indexBuffer.offset)
     }
 }
 
 extension Plane: Renderable {
     func render(commandEncoder: MTLRenderCommandEncoder, uniforms vertex: Uniforms, fragmentUniforms fragment: FragmentUniforms, deltaTime: Float) {
-        render(commandEncoder: commandEncoder, deltaTime: deltaTime)
+        
+        var uniforms = vertex
+        var fragmentUniforms = fragment
+        
+        uniforms.modelMatrix = worldMatrix
+        var wave = deltaTime
+        commandEncoder.setVertexBytes(&wave,
+                                      length: MemoryLayout<Float>.stride,
+                                      index: 2)
+        commandEncoder.setVertexBytes(&uniforms,
+                                      length: MemoryLayout<Uniforms>.stride,
+                                      index: 21)
+        commandEncoder.setFragmentBytes(&fragmentUniforms,
+                                       length: MemoryLayout<FragmentUniforms>.stride,
+                                       index: 22)
+        
+        for mesh in meshes {
+            for vertexBuffer in mesh.mtkMesh.vertexBuffers {
+                commandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: 0)
+                
+                for submesh in mesh.submeshes {
+                    commandEncoder.setRenderPipelineState(submesh.planePipelineState)
+                    var material = submesh.material
+                    commandEncoder.setFragmentBytes(&material,
+                                                    length: MemoryLayout<Material>.stride,
+                                                    index: 11)
+                    commandEncoder.setFragmentTexture(submesh.textures.baseColor, index: 0)
+                    render(commandEncoder: commandEncoder, submesh: submesh)
+                }
+            }
+        }
     }
 }

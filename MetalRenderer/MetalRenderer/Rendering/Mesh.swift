@@ -47,6 +47,7 @@ struct Submesh {
     let textures: Textures
     let pipelineState: MTLRenderPipelineState
     let instancedPipelineState: MTLRenderPipelineState
+    let planePipelineState: MTLRenderPipelineState
     
     init(mdlSubmesh: MDLSubmesh, mtkSubmesh: MTKSubmesh) {
         self.mtkSubmesh = mtkSubmesh
@@ -55,6 +56,8 @@ struct Submesh {
         pipelineState = Submesh.createPipelineState(vertexFunctionName: "vertex_main",
                                                     textures: textures)
         instancedPipelineState = Submesh.createPipelineState(vertexFunctionName: "vertex_instances",
+                                                             textures: textures)
+        planePipelineState = Submesh.createPipelineState(vertexFunctionName: "vertex_plane",
                                                              textures: textures)
     }
     
@@ -69,7 +72,13 @@ struct Submesh {
         // 2가지 버전으로 함수를 컴파일 한다.
         // index 0의 함수 상수가 True인 버전과, False인 버전이다.
         // 더 많은 Texture가 포함된 경우 컴파일러는 더 많은 Shader를 빌드하여 Constance 함수의 가능한 모든 조합을 만든다.
-        let fragmentFrunction = try! Renderer.library.makeFunction(name: "fragment_main",
+        
+        var fragmentFunctionName = "fragment_main"
+        if (vertexFunctionName == "vertex_plane") {
+            fragmentFunctionName = "fragment_plane"
+        }
+        
+        let fragmentFrunction = try! Renderer.library.makeFunction(name: fragmentFunctionName,
                                                                    constantValues: functionConstants)
         
         // pipeline state properties

@@ -31,27 +31,61 @@ struct VertexIn {
     float2 uv [[attribute(2)]];
 };
 
-vertex VertexOut vertex_plane(device const float4 *positionBuffer [[buffer(0)]],
-                              device const float3 *colorBuffer [[buffer(1)]],
-                              constant float &timer [[buffer(2)]],
-                              uint vertexId [[vertex_id]]) {
+vertex VertexOut vertex_plane(VertexIn vertexBuffer [[stage_in]],
+                              constant Uniforms &uniforms [[buffer(21)]],
+                              constant float &timer [[buffer(2)]]) {
     
     VertexOut out {
-        .position = positionBuffer[vertexId],
-        .color = colorBuffer[vertexId]
+        .position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * vertexBuffer.position,
+        .worldNormal = (uniforms.modelMatrix * float4(vertexBuffer.normal, 0)).xyz,
+        .worldPosition = (uniforms.modelMatrix * vertexBuffer.position).xyz,
+        .uv = vertexBuffer.uv
     };
     
-    float r = sqrt(out.position.x * out.position.x + out.position.y * out.position.y);
+    float r = sqrt(out.position.x * out.position.x + out.position.z * out.position.z);
     float pi = 3.141592;
+    float h = 0.3 * exp(-(r * 4)*(r * 4));
     
-    if (r < 0.8)
-        out.position.y = 0.5 * r * sin(r*3*pi-timer*pi);
+    out.position.y = 0.5 * h * sin(r*24*pi-timer*0.75*pi);
     
     return out;
 }
 
-fragment float4 fragment_plane(VertexOut in [[stage_in]]) {
-    return float4(in.color, 1);
+fragment float4 fragment_plane(VertexOut in [[stage_in]],
+                               constant Material &material [[buffer(11)]],
+                               constant FragmentUniforms &fragmentUniforms [[buffer(22)]],
+                               texture2d<float>baseColorTexture [[texture(0),
+                                                                  function_constant(hasColorTexture)]]) {
+    const sampler s(filter::linear);
+    
+    float materialShininess = material.shininess;
+    float3 materialSpecularColor = material.specularColor;
+    
+    float3 lightVector = normalize(lightPosition);
+    float3 normalVector = normalize(in.worldNormal);
+    float3 reflection = reflect(lightVector, normalVector);
+    float3 cameraVector = normalize(in.worldPosition - fragmentUniforms.cameraPosition);
+    
+    float3 baseColor;
+    if (hasColorTexture) {
+        baseColor = baseColorTexture.sample(s, in.uv).rgb;
+    } else {
+        baseColor = material.baseColor;
+    }
+    float diffuseIntensity = saturate(dot(lightVector, normalVector));
+    
+    float3 diffuseColor = baseColor * diffuseIntensity;
+    float3 ambientColor = baseColor * ambientLightColor * ambientLightIntensity;
+    
+    float specularIntensity = pow(saturate(dot(reflection, cameraVector)), materialShininess);
+    float3 specularColor = lightSpecularColor * materialSpecularColor * specularIntensity;
+    
+    float3 color = diffuseColor + ambientColor + specularColor;
+    
+    color.r += in.position.x * 0.001 * 3;
+    color.b += in.position.x * 0.001 * 2;
+    
+    return float4(color, 1);
 }
 
 

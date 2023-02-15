@@ -20,7 +20,7 @@ class ViewController: NSViewController {
         renderer = Renderer(view: metalView)
         metalView.device = Renderer.device
         metalView.delegate = renderer
-        metalView.clearColor = MTLClearColor(red: 1.0, green: 1.0, blue: 0.8, alpha: 1.0)
+        metalView.clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         scene = WavingPlain(sceneSize: metalView.bounds.size)
         scene?.sceneDelegate = self
         renderer?.scene = scene
