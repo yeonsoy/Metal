@@ -46,7 +46,7 @@ class Model: Node {
 }
 
 extension Model: Renderable {
-    func render(commandEncoder: MTLRenderCommandEncoder, uniforms vertex: Uniforms, fragmentUniforms fragment: FragmentUniforms) {
+    func render(commandEncoder: MTLRenderCommandEncoder, uniforms vertex: Uniforms, fragmentUniforms fragment: FragmentUniforms, deltaTime: Float) {
         var uniforms = vertex
         var fragmentUniforms = fragment
         

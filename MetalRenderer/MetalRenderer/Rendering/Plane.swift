@@ -10,8 +10,8 @@ import MetalKit
 
 class Plane: Node {
     let positionArray: [SIMD4<Float>] = [
-        SIMD4<Float>(-0.5, -0.5, 0, 1),
-        SIMD4<Float>(0.5, -0.5, 0, 1),
+        SIMD4<Float>(-0.5, -0.5, 0, 0.7),
+        SIMD4<Float>(0.5, -0.5, 0, 0.7),
         SIMD4<Float>(-0.5, 0.5, 0, 1),
         SIMD4<Float>(0.5, 0.5, 0, 1)
     ]
@@ -60,9 +60,13 @@ class Plane: Node {
         return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }
     
-    func render(commandEncoder: MTLRenderCommandEncoder) {
+    func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
         commandEncoder.setRenderPipelineState(pipelineState)
         
+        var wave = deltaTime
+        commandEncoder.setVertexBytes(&wave,
+                                      length: MemoryLayout<Float>.stride,
+                                      index: 2)
         commandEncoder.setVertexBuffer(positionBuffer, offset: 0, index: 0)
         commandEncoder.setVertexBuffer(colorBuffer, offset: 0, index: 1)
         
@@ -75,7 +79,7 @@ class Plane: Node {
 }
 
 extension Plane: Renderable {
-    func render(commandEncoder: MTLRenderCommandEncoder, uniforms vertex: Uniforms, fragmentUniforms fragment: FragmentUniforms) {
-        render(commandEncoder: commandEncoder)
+    func render(commandEncoder: MTLRenderCommandEncoder, uniforms vertex: Uniforms, fragmentUniforms fragment: FragmentUniforms, deltaTime: Float) {
+        render(commandEncoder: commandEncoder, deltaTime: deltaTime)
     }
 }

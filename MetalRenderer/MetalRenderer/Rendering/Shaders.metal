@@ -32,18 +32,26 @@ struct VertexIn {
 };
 
 vertex VertexOut vertex_plane(device const float4 *positionBuffer [[buffer(0)]],
-                             device const float3 *colorBuffer [[buffer(1)]],
-                             uint vertexId [[vertex_id]]) {
-  
-  VertexOut out {
-    .position = positionBuffer[vertexId],
-    .color = colorBuffer[vertexId]
-  };
-  return out;
+                              device const float3 *colorBuffer [[buffer(1)]],
+                              constant float &timer [[buffer(2)]],
+                              uint vertexId [[vertex_id]]) {
+    
+    VertexOut out {
+        .position = positionBuffer[vertexId],
+        .color = colorBuffer[vertexId]
+    };
+    
+    float r = sqrt(out.position.x * out.position.x + out.position.y * out.position.y);
+    float pi = 3.141592;
+    
+    if (r < 0.8)
+        out.position.y = 0.5 * r * sin(r*3*pi-timer*pi);
+    
+    return out;
 }
 
 fragment float4 fragment_plane(VertexOut in [[stage_in]]) {
-  return float4(in.color, 1);
+    return float4(in.color, 1);
 }
 
 
@@ -79,7 +87,7 @@ fragment float4 fragment_main(VertexOut in [[stage_in]],
                               constant Material &material [[buffer(11)]],
                               constant FragmentUniforms &fragmentUniforms [[buffer(22)]],
                               texture2d<float>baseColorTexture [[texture(0),
-                                                                function_constant(hasColorTexture)]]) {
+                                                                 function_constant(hasColorTexture)]]) {
     const sampler s(filter::linear);
     
     float materialShininess = material.shininess;
@@ -100,7 +108,7 @@ fragment float4 fragment_main(VertexOut in [[stage_in]],
     
     float3 diffuseColor = baseColor * diffuseIntensity;
     float3 ambientColor = baseColor * ambientLightColor * ambientLightIntensity;
-
+    
     float specularIntensity = pow(saturate(dot(reflection, cameraVector)), materialShininess);
     float3 specularColor = lightSpecularColor * materialSpecularColor * specularIntensity;
     

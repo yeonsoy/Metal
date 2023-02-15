@@ -19,6 +19,7 @@ class Renderer: NSObject {
     
     static var library: MTLLibrary!
     let depthStencilState: MTLDepthStencilState
+    var timer: Float = 0
     
     weak var scene: Scene?
     
@@ -65,11 +66,13 @@ extension Renderer: MTKViewDelegate {
         let deltaTime = 1 / Float(view.preferredFramesPerSecond)
         scene.update(deltaTime: deltaTime)
         
+        timer += 0.05
         for renderable in scene.renderables {
             commandEncoder.pushDebugGroup(renderable.name)
             renderable.render(commandEncoder: commandEncoder,
                               uniforms: scene.uniforms,
-                              fragmentUniforms: scene.fragmentUniforms)
+                              fragmentUniforms: scene.fragmentUniforms,
+                              deltaTime: timer)
             commandEncoder.popDebugGroup()
         }
         
